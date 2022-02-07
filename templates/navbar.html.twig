@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/list">Concerts</a>
+      {% if is_granted('ROLE_ADMIN')%}
+        <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/band">Bands</a>
+        <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/member">Members</a>
+        <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/user">Users</a>    
+      {% endif %}
+      {% if app.user %} 
+        <div class="form-inline">
+          <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/user/{{app.user.id}}">Bonjour {{app.user.getFirstName()}}</a>
+          <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/logout">Logout</a>
+        </div>
+      {% else %}
+        <div>
+          <a class="nav-item nav-link" href="https://webinfo.iutmontp.univ-montp2.fr/~benincasaj/concertProject/public/login">Login</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Members{% endblock %}
+
+{% block body %}
+    <h1>CpMember</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cp_member.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ cp_member.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ cp_member.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ cp_member.photo }}</td>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <td>{{ cp_member.birthDate ? cp_member.birthDate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('member_index') }}">back to list</a>
+
+    <a href="{{ path('member_edit', {'id': cp_member.id}) }}">edit</a>
+
+    {{ include('member/_delete_form.html.twig') }}
+{% endblock %}
